@@ -12,8 +12,8 @@ use margin and padding to space things out a little
   --nurple: #654251;
   --night_sky: #1F363A;
 
-  --main-bg-color: var(--cream);
-  --alt-bg-color: var(--night_sky);
+  --copy-bg-color: var(--cream);
+  --body-bg-color: var(--night_sky);
   --main-font-color: var(--charcoal);
   --alt-font-color: var(--grass);
   --link-new-color: var(--purple);
@@ -22,14 +22,14 @@ use margin and padding to space things out a little
 }
 
 body {
-  background-color: var(--main-bg-color);
+  background-color: var(--body-bg-color);
   color: var(--main-font-color);
   font-family: helvetica, sans-serif;
   font-size: 12pt;
 }
 
 h1{
-  background-color: var(--alt-bg-color);
+  background-color: var(--body-bg-color);
   color: var(--alt-font-color);
   font-size: 300%;
   font-family: Times, serif;
@@ -37,8 +37,8 @@ h1{
 }
 
 h2{
-  background-color: var(--alt-bg-color);
-  color: var(--main-bg-color);
+  background-color: var(--body-bg-color);
+  color: var(--copy-bg-color);
   font-family: Times, serif;
   font-size: 200%;
   text-indent: 2%;
@@ -66,9 +66,11 @@ thead{
 }
 
 .body-content{
+  background-color: var(--copy-bg-color);
   margin-left: auto;
   margin-right: auto;
-  width: 93%;
+  text-indent: 7%;
+  width: 100%;
 }
 
 .no-indent {
