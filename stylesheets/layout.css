@@ -1,0 +1,27 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+  "hd hd hd hd hd hd"
+  "nav main main main main ."
+  "ft ft ft ft ft ft";
+}
+
+header {
+  grid-area: hd;
+}
+
+nav {
+  grid-area: nav;
+}
+
+nav ul {
+  position: sticky;
+  top: 10px;
+}
+
+article {
+  grid-area: main;
+}
+
+footer {grid-area: ft;}

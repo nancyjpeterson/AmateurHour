@@ -1,35 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link href="stylesheets/normalize.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/layout.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/presentation.css" type="text/css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <title>Chris Keefe: Not a Front-End Developer</title>
   </head>
+
   <body>
-    <!-- at least three paragraphs of information about some topic or
-    activity or TV show or Movie, or really anything, as their main content
-
-    navigational element with links to all the website’s pages.
-
-    non-default page layout via grid -->
+    <header>
+      <h1 id=titleheader>Chris Keefe</h1>
+    </header>
     <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="play.html">Play</a></li>
+        <li><a href="about_me.html">About Me</a></li>
+      </ul>
     </nav>
-
-    <section>
-      <h2>Caporaso Lab</h2>
-      <p>
-        Python, Git, Data Analysis, Bioinformatics, Computational Microbial Ecology
-      </p>
-    </section>
-    <section>
-      <h2>Northern Arizona University</h2>
-      <p>
-        Budget Management, Grant and Travel Policy compliance, WP + Ektron Site Development
-      </p>
-    </section>
-    <section>
-      <h2>Non-GMO Project</h2>
-      <p>
-        Program Management/Development, Procurement/Shipping, Drupal/CiviCRM project management
-      </p>
-    </section>
+    <article>
+      <section>
+        <h2>Caporaso Lab</h2>
+        <p>
+          I work in a wonderful lab at the Pathogen and Microbiome Institute at
+          Northern Arizona University. I develop primarily on QIIME 2, a computational
+          microbial ecology platform, and its associated documentation, plugins, web sites, etc.
+          As a bonus, I get to put a little bit of time into data analysis and
+          experimental design for current microbial ecology projects.
+        </p>
+        <p>
+          I work in Python, with a pinch of javascript, and make use of Git, LaTeX, RST, Jinja2, Sphinx,
+          and a few other neat technologies.
+        </p>
+      </section>
+      <section>
+        <h2>Northern Arizona University</h2>
+        <p>
+          At NAU, I coordinated the financials on the $5M Child Welfare Training
+          Project grant, was responsible for travel policy compliance, application
+          processes, and web marketing and web site administration using WordPress, Ektron,
+          and a number of social media platforms.
+        </p>
+      </section>
+      <section>
+        <h2>Non-GMO Project</h2>
+        <p>
+          At the Non-GMO Project, I led a small team in a "nonprofit startup"
+          environment - rapid growth, constant change, and many hats to wear:
+          Program Management/Development, Procurement/Shipping, Drupal/CiviCRM project management
+        </p>
+      </section>
+    </article>
+    <footer>
+      <div class=footer-bar>
+        <p>
+          &copy; Chris Keefe 2018
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
