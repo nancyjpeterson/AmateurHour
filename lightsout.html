@@ -5,6 +5,7 @@
     <link href="stylesheets/layout.css" type="text/css" rel="stylesheet">
     <link href="stylesheets/presentation.css" type="text/css" rel="stylesheet">
     <link href="stylesheets/lightsout.css" type="text/css" rel="stylesheet">
+    <script type="module" src="js/lightsout.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <title>Chris Keefe: Not a Front-End Developer</title>
   </head>
@@ -12,9 +13,17 @@
 		<header>
 			<h1>Lights Out</h1>
 		</header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="play.html">Play</a></li>
+        <li><a href="about_me.html">About Me</a></li>
+        <li><a href="lightsout.html">Lights Out!</a></li>
+      </ul>
+    </nav>
 		<div id="lightsout">
-			<div id="lightsout-timer">
-      </div>
+			<div id="lightsout-timer">TIMER</div>
 			<div id="lightsout-board">
 				<div class="lightsout-square"></div>
 				<div class="lightsout-square"></div>
@@ -42,6 +51,7 @@
 				<div class="lightsout-square"></div>
 				<div class="lightsout-square"></div>
       </div>
+      <button id="lightsout-newgame-btn">New Game</button>
     </div>
     <footer>
       <div class=footer-bar>
