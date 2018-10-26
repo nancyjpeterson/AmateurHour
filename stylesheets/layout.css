@@ -24,4 +24,6 @@ article {
   grid-area: main;
 }
 
-footer {grid-area: ft;}
+footer {
+  grid-area: ft;
+}
