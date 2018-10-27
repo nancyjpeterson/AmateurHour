@@ -5,10 +5,12 @@ import Timer from './timer.js'
 const height = 5
 const width = 5
 const timer = new Timer()
-
+let currentTime = null
+let interval;
+const squares = document.querySelectorAll('.lightsout-square')
+const overlayDiv = document.createElement('div')
 
 function setup () {
-  const squares = document.querySelectorAll('.lightsout-square')
   for (let i = 0; i < squares.length; i++) {
     const row = Math.floor(i / height)
     const col = i % height
@@ -18,43 +20,47 @@ function setup () {
     squares[i].addEventListener('click', squareClickHandler)
   }
   const newGameButton = document.getElementById('lightsout-newgame-btn')
-  newGameButton.addEventListener('click', newGame)
+  newGameButton.addEventListener('click', startNewGame)
   setUpTimer()
-  configureStart()
 }
 
-function newGame(){
+function startNewGame() {
+  removeEndGameOverlay()
+  setUpNewGame()
+  startTimer()
+}
+
+function setUpNewGame(){
   setUpTimer()
-  configureStart()
+  configureStartingBoard()
 }
 
 function setUpTimer() {
-  document.getElementById("lightsout-timer").innerHTML = "00:00"
+  document.getElementById("lightsout-timer").innerHTML = "0:0"
   timer.reset()
 }
 
+function startTimer (){
+  timer.start()
+  // "restart" - prevent interval from increasing in speed with multiple function calls
+  clearInterval(interval)
+  // update the Timer every 1 s (1000 ms)
+  interval = setInterval(updateTimer, 1000)
+}
+
 function updateTimer() {
-  timer.currentTime =  timer.getElapsedTime() //TODO: Format
-  document.getElementById("lightsout-timer").innerHTML = timer.currentTime
+  currentTime = timer.getElapsedTime()
+  document.getElementById("lightsout-timer").innerHTML = currentTime[0] + ":" + currentTime[1]
 }
 
-function startGame() {
-  startTimer()
-  setBoard()
+function configureStartingBoard () {
+  for (let i = 0; i < Math.floor(Math.random() * 11 ) + 25; i++){
+    toggleSquares(Math.floor(Math.random() * 5) + 1,
+                             Math.floor(Math.random() * (5)) + 1)
+  }
 }
-//in JS, you can get the current date by creating a new Date().
-// possible to get time by creating a Date at start and a Date every second, find the difference and push to timer display
 
-//use setInterval(func, intervalInMS) to run a func every second
 setup()
-
-//access squares based on gridRowStart and colRowStart
-//use CSS Attribute Selector attr* = value to find attributes with name attr that contain at least one string value
-//document.querySelectorAll('.lightsout-square[style*="grid-row-start: 1"][style*="grid-Column-Start: 1"]')
-
-//if you have an internal representation of game state, use 0-4 indices. Otherwise, 1-5
-
-// row and col are 1-5 here
 function getSquare (row, col) {
   return document.querySelector(".lightsout-square" +
                                 `[style*="grid-row-start: ${row}"]` +
@@ -72,8 +78,27 @@ function getAdjacentSquares (row, col) {
 }
 
 function squareClickHandler (event) {
-  console.log(event.currentTarget.style.gridRowStart)
   toggleSquares(parseInt(event.currentTarget.style.gridRowStart), parseInt(event.currentTarget.style.gridColumnStart))
+  // check puzzle completion (loop over squares, breaking if there is a white square)
+  for (let i = 0; i < squares.length; i++){
+    if (squares[i].classList.contains("js-lightsout-square-on")) {return}
+  }
+  console.log("it works!")
+  timer.stop()
+  createEndGameOverlay()
+}
+
+function createEndGameOverlay(){
+  overlayDiv.id = "endGame-overlay"
+  overlayDiv.className = "lightsout"
+  overlayDiv.innerHTML = "You Win!"
+  document.getElementById("lightsout-board").appendChild(overlayDiv)
+}
+
+function removeEndGameOverlay(){
+  if (document.contains(document.getElementById("endGame-overlay"))){
+    document.getElementById("endGame-overlay").remove()
+  }
 }
 
 function toggleSquares (row, col) {
@@ -81,14 +106,3 @@ function toggleSquares (row, col) {
     square.classList.toggle('js-lightsout-square-on')
   }
 }
-
-function configureStart () {
-  for (let i = 0; i < Math.floor(Math.random() * 11 ) + 25; i++){
-    toggleSquares(Math.floor(Math.random() * 5) + 1,
-                             Math.floor(Math.random() * (5)) + 1)
-  }
-}
-
-// Reset game (and message)
-// Overlay lock screen
-// finish timer
